@@ -12,7 +12,7 @@ export default function CreateForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    const res = await fetch("http://localhost:4000/tickets", {
+    const res = await fetch("http://localhost:3000/api/tickets", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -21,11 +21,14 @@ export default function CreateForm() {
         title,
         body,
         priority,
-        user_email: "awesome@netninja.dev",
       }),
     });
+    setLoading(false)
+    const data = await res.json();
 
-    if (res.status === 201) {
+    if (data.error) {
+      console.log(data.error);
+    } else {
       router.refresh();
       router.push("/tickets");
     }

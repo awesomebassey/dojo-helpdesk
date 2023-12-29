@@ -9,15 +9,19 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@supabase/auth-helpers-nextjs": "^0.8.7",
+    "@supabase/supabase-js": "^2.39.1",
+    "next": "13.5.5",
     "react": "^18",
     "react-dom": "^18",
-    "next": "13.5.5"
+    "react-icons": "^4.12.0"
   },
   "devDependencies": {
     "autoprefixer": "^10",
-    "postcss": "^8",
-    "tailwindcss": "^3",
+    "encoding": "^0.1.13",
     "eslint": "^8",
-    "eslint-config-next": "13.5.5"
+    "eslint-config-next": "13.5.5",
+    "postcss": "^8",
+    "tailwindcss": "^3"
   }
 }

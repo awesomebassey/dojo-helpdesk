@@ -1,12 +1,14 @@
+import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import Link from "next/link";
+import { cookies } from "next/headers";
 
 const getTickets = async () => {
-  const res = await fetch("http://localhost:4000/tickets/", {
-    next: {
-      revalidate: 0,
-    },
-  });
-  return res.json();
+  const supabase = createServerComponentClient({ cookies });
+  const { data, error } = await supabase.from("tickets").select();
+  if (error) {
+    console.log(error);
+  }
+  return data;
 };
 
 export default async function TicketList() {
